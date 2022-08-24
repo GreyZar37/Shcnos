@@ -164,10 +164,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterAngry: {fileID: 1343276560, guid: 305b8c1ad4f0c534cb8ab8b8c56162af, type: 3}
   monsterRenderer: {fileID: 0}
-  killDistance: 7
+  killDistance: 6.5
+  neckSnap: {fileID: 8300000, guid: 9d814c7509636244c962ab80874019bb, type: 3}
+  spashSound: {fileID: 8300000, guid: 7c23ac0d52bd0464197c87330548ccf8, type: 3}
+  screamSound: {fileID: 8300000, guid: ca9ffa541350a074da2fd07af3453a32, type: 3}
   enemyState: 0
   eyes: {fileID: 1597014072213254194}
-  speed: 6.5
+  speed: 4.5
   rightDirection: 0
 --- !u!50 &3214544992201987846
 Rigidbody2D:
@@ -197,10 +200,10 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3214544992201987868}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 573cb158f2eb6394594e4d736f8e8c8f, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -221,26 +224,26 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.2
-      value: 0.7979584
-      inSlope: -5.0019917
-      outSlope: -5.0019917
+      time: 0.12372704
+      value: 0.68546295
+      inSlope: -2.546718
+      outSlope: -2.546718
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.23818569
     - serializedVersion: 3
-      time: 0.4
-      value: 0.29795837
-      inSlope: -1.2504979
-      outSlope: -1.2504979
+      time: 0.422604
+      value: 0.2229538
+      inSlope: -1.1519773
+      outSlope: -1.1519773
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.39320284
       outWeight: 0
     - serializedVersion: 3
-      time: 0.8
-      value: 0.047958374
+      time: 0.7632778
+      value: 0.049987793
       inSlope: -0.31262448
       outSlope: -0.31262448
       tangentMode: 0
@@ -248,8 +251,8 @@ AudioSource:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 1
-      value: 0
+      time: 0.9915371
+      value: 0.024993896
       inSlope: -0.20007975
       outSlope: -0.20007975
       tangentMode: 0
@@ -278,7 +281,7 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
+      time: 0.11581993
       value: 0
       inSlope: 0
       outSlope: 0
@@ -327,7 +330,7 @@ AudioDistortionFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3214544992201987868}
   m_Enabled: 1
-  m_DistortionLevel: 0.5
+  m_DistortionLevel: 0.7
 --- !u!95 &6478443938474357258
 Animator:
   serializedVersion: 4

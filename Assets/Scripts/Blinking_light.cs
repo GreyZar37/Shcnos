@@ -16,6 +16,8 @@ public class Blinking_light : MonoBehaviour
 
     public lighType light_;
 
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,25 +34,7 @@ public class Blinking_light : MonoBehaviour
     {
         if(light_ == lighType.Normal)
         {
-            if (monster == null && GameObject.FindGameObjectWithTag("Monster") != null)
-            {
-
-                monster = GameObject.FindGameObjectWithTag("Monster").GetComponent<Transform>();
-            }
-            else if(GameObject.FindGameObjectWithTag("Monster") != null && monster != null)
-            {
-                float distance = Vector2.Distance(transform.position, monster.position);
-                if (distance <= 10)
-                {
-                    StartCoroutine(lightFlickingMonster());
-                }
-                else
-                {
-                    light2D.intensity = 1f;
-                }
-              
-
-            }
+           
         }
        
        
