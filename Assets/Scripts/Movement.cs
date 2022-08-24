@@ -91,7 +91,7 @@ public class Movement : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
             if (collision.gameObject.tag == ("Key"))
             {
@@ -100,7 +100,6 @@ public class Movement : MonoBehaviour
                 keys = keys + 1;
             }
         }
-        
     }
 
   
