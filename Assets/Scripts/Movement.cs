@@ -60,8 +60,6 @@ public class Movement : MonoBehaviour
 
     void completeflip()
     {
-        
-
         if (horizontal > 0)
        {
             transform.eulerAngles = new Vector3(0, 0, 0);
@@ -74,13 +72,18 @@ public class Movement : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == ("Key"))
+        if (Input.GetKeyDown(KeyCode.I))
         {
-            Destroy(collision.gameObject);
-            keys = keys + 1;
+            if (collision.gameObject.tag == ("Key"))
+            {
+                Debug.Log("ghdhfdhfd");
+                Destroy(collision.gameObject);
+                keys = keys + 1;
+            }
         }
+        
     }
 }
 
