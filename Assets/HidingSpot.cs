@@ -3,13 +3,9 @@ using UnityEngine;
 public class HidingSpot : MonoBehaviour
 {
 
-    public GameObject playerHidden;
-    public SpriteRenderer objSpr;
 
 
-    public SpriteRenderer player;
 
-    bool hidden;
     bool close;
 
 
@@ -17,31 +13,22 @@ public class HidingSpot : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<SpriteRenderer>();
 
     }
 
     // Update is called once per frame
     void Update()
     {
-       
-        if (close && Input.GetKeyDown(KeyCode.F))
+        if (close && Movement.crouching)
         {
-            if (hidden)
-            {
-                Movement.hidden = false;
 
-                hidden = false;
-                playerHidden.SetActive(false);
-                player.enabled = true;
-            }
-            else if (hidden == false)
-            {
-                Movement.hidden = true;
-                hidden = true;
-                playerHidden.SetActive(true);
-                player.enabled = false;
-            }
+            Movement.hidden = true;
+
+        }
+        else if(close &&  Movement.crouching != true)
+        {
+            Movement.hidden = false;
+
         }
     }
 
@@ -58,6 +45,8 @@ public class HidingSpot : MonoBehaviour
         if (collision.tag == "Player")
         {
             close = false;
+            Movement.hidden = false;
+
         }
     }
 }

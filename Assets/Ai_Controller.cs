@@ -14,6 +14,10 @@ public class Ai_Controller : MonoBehaviour
     public float killDistance;
 
     Animator animator;
+    AudioSource audioSource;
+    public AudioClip neckSnap;
+    public AudioClip spashSound;
+    public AudioClip screamSound;
 
     public EnemyState enemyState;
     public Transform eyes;
@@ -36,6 +40,7 @@ public class Ai_Controller : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        audioSource = gameObject.GetComponent<AudioSource>();
         animator = gameObject.GetComponent<Animator>();
         monsterRenderer = gameObject.GetComponent<SpriteRenderer>();
          rb = gameObject.GetComponent<Rigidbody2D>();
@@ -55,10 +60,11 @@ public class Ai_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
 
         distance = Vector2.Distance(transform.position, playerPosition.position);
 
-        RaycastHit2D hit = Physics2D.Raycast(eyes.position, -transform.right, 13);
+        RaycastHit2D hit = Physics2D.Raycast(eyes.position, -transform.right, 10);
 
         if(hit.collider != null)
         {
@@ -101,7 +107,7 @@ public class Ai_Controller : MonoBehaviour
         else if (enemyState == EnemyState.chasing)
         {
             animator.SetBool("Angry", true);
-            speed = 6.5f;
+            speed = 6f;
             rb.velocity = new Vector2(0, 0);
             monsterRenderer.sprite = monsterAngry;
            
@@ -132,7 +138,7 @@ public class Ai_Controller : MonoBehaviour
     void effektDistanceMathf()
     {
        
-        if (distance < 30)
+        if (distance < 50)
         {
             MonsterEffect.monsterIsNear = true;
         }
@@ -152,4 +158,20 @@ public class Ai_Controller : MonoBehaviour
 
     }
 
+    public void playSpashSound()
+    {
+        audioSource.PlayOneShot(spashSound);
+        audioSource.PlayOneShot(screamSound);
+
+
+    }
+    public void playNeckSnapSound()
+    {
+        audioSource.PlayOneShot(neckSnap);
+
+    }
+    public void stopSounds()
+    {
+        audioSource.Stop();
+    }
 }

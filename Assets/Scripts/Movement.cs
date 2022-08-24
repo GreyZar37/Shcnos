@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Movement : MonoBehaviour
 {
@@ -10,7 +11,12 @@ public class Movement : MonoBehaviour
     public GameObject light_;
     float horizontal;
 
+    AudioSource audioSource;
+    public AudioClip[] walkSound;
+   
+
     public static bool hidden;
+    public static bool crouching;
 
     public int keys = 0;
 
@@ -18,6 +24,7 @@ public class Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioSource>();
         animate = gameObject.GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         SpriteRenderer_ = GetComponent<SpriteRenderer>();
@@ -26,34 +33,44 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        print(hidden);
 
-
-        if (hidden)
-        {
-            rb.velocity = new Vector2(0, 0);
-            light_.SetActive(false);
-        }
-       
-
-        if (!hidden)
-        {
-            light_.SetActive(true);
-            horizontal = Input.GetAxis("Horizontal");
-            animate.SetFloat("Velocity", Mathf.Abs(horizontal));
-            rb.velocity = new Vector2(horizontal * speed, gameObject.transform.position.y);
-            completeflip();
-
-            if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.R))
             {
-                speed = 6;
+            Application.Quit();
+        }
+
+        horizontal = Input.GetAxis("Horizontal");
+        rb.velocity = new Vector2(horizontal * speed, gameObject.transform.position.y);
+        animate.SetFloat("Velocity", Mathf.Abs(horizontal));
+        animate.SetBool("IsCrouching", crouching);
+
+       
+
+            if (Input.GetKey(KeyCode.C))
+            {
+                crouching = true;
+                light_.SetActive(false);
             }
             else
             {
-                speed = 4;
+                crouching = false;
+                light_.SetActive(true);
             }
 
-        }
+            completeflip();
+
+            if (!crouching)
+            {
+                walkAndRun();
+            }
+            else if (crouching)
+            {
+                crouch();
+            }
+            
+
+        
         
        
     }
@@ -85,5 +102,32 @@ public class Movement : MonoBehaviour
         }
         
     }
+
+  
+    public void walkSounds()
+    {
+        audioSource.PlayOneShot(walkSound[Random.Range(0, walkSound.Length)]);
+    }
+
+    public void crouch()
+    {
+        speed = 2f;
+    }
+    public void walkAndRun()
+    {
+        light_.SetActive(true);
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            speed = 6;
+            animate.speed = 2;
+        }
+        else
+        {
+            speed = 4;
+            animate.speed = 1;
+        }
+    }
+
 }
 
