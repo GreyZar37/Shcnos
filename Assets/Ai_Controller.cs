@@ -11,6 +11,8 @@ public class Ai_Controller : MonoBehaviour
 {
     public Sprite monsterAngry;
     public SpriteRenderer monsterRenderer;
+    public float killDistance;
+
     Animator animator;
 
     public EnemyState enemyState;
@@ -103,9 +105,10 @@ public class Ai_Controller : MonoBehaviour
             rb.velocity = new Vector2(0, 0);
             monsterRenderer.sprite = monsterAngry;
            
-            if(distance <= 7)
+            if(distance <= killDistance)
             {
                 rb.velocity = new Vector2(0, 0);
+                animator.SetTrigger("Kill");
             }
             else
             {
@@ -142,5 +145,11 @@ public class Ai_Controller : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    
+
+    public void destoryPlayer()
+    {
+        playerPosition.gameObject.SetActive(false);
+
+    }
+
 }
