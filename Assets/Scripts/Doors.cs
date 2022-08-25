@@ -110,5 +110,16 @@ public class Doors : MonoBehaviour
 
     }
 
+    public void unlockDoor(Movement data)
+    {
+        if(data.keys > 0)
+        {
+            locked = false;
+            data.keys--;
+            opening = true;
+            audioSource.PlayOneShot(DoorSounds[0], 0.5f);
+        }
+    }
+
    
 }
