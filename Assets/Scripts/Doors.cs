@@ -79,7 +79,7 @@ public class Doors : MonoBehaviour
 
             if (locked)
             {
-                audioSource.PlayOneShot(DoorSoundLocked, 1f);
+                audioSource.PlayOneShot(DoorSoundLocked, 0.2f);
 
             }
             else

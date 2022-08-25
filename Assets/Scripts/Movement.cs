@@ -16,6 +16,7 @@ public class Movement : MonoBehaviour
    
 
     public static bool hidden;
+    bool pickingUp;
     public static bool crouching;
 
     public int keys = 0;
@@ -33,15 +34,18 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(hidden);
-
+        interact();
         if (Input.GetKeyDown(KeyCode.R))
             {
             Application.Quit();
         }
 
         horizontal = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(horizontal * speed, gameObject.transform.position.y);
+        if(pickingUp == false)
+        {
+            rb.velocity = new Vector2(horizontal * speed, gameObject.transform.position.y);
+
+        }
         animate.SetFloat("Velocity", Mathf.Abs(horizontal));
         animate.SetBool("IsCrouching", crouching);
 
@@ -126,5 +130,24 @@ public class Movement : MonoBehaviour
         }
     }
 
+    public void interact()
+    {
+        if (Input.GetKeyDown(KeyCode.F) && pickingUp == false && crouching != true)
+        {
+
+            animate.SetTrigger("PickUpStand");
+            pickingUp = true;
+        }
+        if (pickingUp)
+        {
+            rb.velocity = new Vector2(0, 0);
+
+        }
+    }
+    public void pickedUp()
+    {
+        pickingUp = false;
+
+    }
 }
 
