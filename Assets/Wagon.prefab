@@ -5548,7 +5548,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1156214933119426734}
   - component: {fileID: 1156214933119426735}
-  - component: {fileID: 8076091}
   - component: {fileID: 1156214934160179756}
   m_Layer: 0
   m_Name: Light 2D
@@ -5652,22 +5651,6 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
---- !u!114 &8076091
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1156214933119426733}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39a4e5c0d2b63e84d9a2d224c63c4035, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  monster: {fileID: 0}
-  light2D: {fileID: 0}
-  flick: 0
-  light_: 1
 --- !u!114 &1156214934160179756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6222,4 +6205,4 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1024032
+  m_InstanceId: 39946
