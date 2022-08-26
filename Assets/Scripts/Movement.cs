@@ -161,7 +161,6 @@ public class Movement : MonoBehaviour
         {
             currentItem = collision.gameObject;
             closeToLockedDoor = true;
-
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
