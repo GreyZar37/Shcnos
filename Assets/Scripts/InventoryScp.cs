@@ -27,14 +27,11 @@ public class InventoryScp : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Tab) && inventoryUI.activeInHierarchy == true)
         {
             inventoryUI.SetActive(false);
-
-
         }
         else if (Input.GetKeyDown(KeyCode.Tab) && inventoryUI.activeInHierarchy == false)
         {
             inventoryUI.SetActive(true);
         }
-
     }
 }
 
