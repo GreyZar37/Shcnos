@@ -5194,8 +5194,8 @@ MonoBehaviour:
   m_LocalBounds:
     m_Center: {x: 0, y: -0.00000011920929, z: 0}
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
-  m_PointLightInnerAngle: 14.51362
-  m_PointLightOuterAngle: 81.76
+  m_PointLightInnerAngle: 30.023615
+  m_PointLightOuterAngle: 97.27
   m_PointLightInnerRadius: 0.42962295
   m_PointLightOuterRadius: 8.004339
   m_ShapeLightParametricSides: 5
@@ -5338,8 +5338,8 @@ MonoBehaviour:
   m_LocalBounds:
     m_Center: {x: 0, y: -0.00000011920929, z: 0}
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
-  m_PointLightInnerAngle: 9.123621
-  m_PointLightOuterAngle: 76.37
+  m_PointLightInnerAngle: 25.913622
+  m_PointLightOuterAngle: 93.16
   m_PointLightInnerRadius: 0.42962295
   m_PointLightOuterRadius: 7.1473374
   m_ShapeLightParametricSides: 5
@@ -5548,7 +5548,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1156214933119426734}
   - component: {fileID: 1156214933119426735}
-  - component: {fileID: 1156214934160179756}
   m_Layer: 0
   m_Name: Light 2D
   m_TagString: Untagged
@@ -5651,22 +5650,6 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
---- !u!114 &1156214934160179756
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1156214933119426733}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39a4e5c0d2b63e84d9a2d224c63c4035, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  monster: {fileID: 0}
-  light2D: {fileID: 1156214933119426735}
-  flick: 0
-  light_: 0
 --- !u!1 &1156214933639486590
 GameObject:
   m_ObjectHideFlags: 0
@@ -6060,7 +6043,7 @@ GameObject:
   - component: {fileID: 746973646273072565}
   m_Layer: 2
   m_Name: Door
-  m_TagString: Untagged
+  m_TagString: LockedDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6122,7 +6105,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 7
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -6178,7 +6161,7 @@ MonoBehaviour:
   DoorSoundLocked: {fileID: 8300000, guid: 0b121d1108274634694a630b72f9b24f, type: 3}
   light2D: {fileID: 0}
   block: {fileID: 1727260710}
-  locked: 0
+  locked: 1
 --- !u!114 &746973646273072565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6205,4 +6188,4 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 39946
+  m_InstanceId: -29810

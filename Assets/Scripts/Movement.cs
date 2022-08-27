@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,6 +29,18 @@ public class Movement : MonoBehaviour
     public Transform position2;
 
     public GameObject key;
+    
+    [SerializeField]
+    CinemachineVirtualCamera m_Camera;
+    [SerializeField]
+    float transition_Speed;
+
+    [SerializeField]
+    GameObject inventoryUI;
+
+    [SerializeField]
+    Animator animator;
+    bool loadInventory;
 
     // Start is called before the first frame update
     void Start()
@@ -79,6 +92,15 @@ public class Movement : MonoBehaviour
             crouch();
         }
 
+        if (Input.GetKeyDown(KeyCode.Tab) && inventoryUI.activeInHierarchy == true)
+        {
+            inventoryUI.SetActive(false);
+        }
+        else if (Input.GetKeyDown(KeyCode.Tab) && inventoryUI.activeInHierarchy == false)
+        {
+            inventoryUI.SetActive(true);
+        }
+
     }
 
     void completeflip()
@@ -113,6 +135,11 @@ public class Movement : MonoBehaviour
         {
             speed = 6;
             animate.speed = 2;
+        }
+        else if (inventoryUI.activeInHierarchy == true)
+        {
+            speed = 0;
+            animate.speed = 0;
         }
         else
         {

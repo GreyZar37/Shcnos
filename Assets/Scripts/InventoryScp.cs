@@ -24,14 +24,20 @@ public class InventoryScp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab) && inventoryUI.activeInHierarchy == true)
+        /*if (Input.GetKeyDown(KeyCode.Tab) && inventoryUI.activeInHierarchy == true)
         {
             inventoryUI.SetActive(false);
+
         }
         else if (Input.GetKeyDown(KeyCode.Tab) && inventoryUI.activeInHierarchy == false)
         {
             inventoryUI.SetActive(true);
+<<<<<<< HEAD
+        }*/
+=======
         }
+
+>>>>>>> e9e76c6f70004ef7e2f08b7e06c0729bd820c74b
     }
 }
 
