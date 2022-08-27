@@ -24,6 +24,10 @@ public class Movement : MonoBehaviour
     bool closeToLockedDoor;
 
     GameObject currentItem;
+    public Transform position1;
+    public Transform position2;
+
+    public GameObject key;
 
     // Start is called before the first frame update
     void Start()
@@ -127,26 +131,27 @@ public class Movement : MonoBehaviour
                 animate.SetTrigger("PickUpStand");
                 pickingUp = true;
                 Destroy(currentItem);
-
+                Instantiate(key, position1.position, position1.rotation, position1.transform);
+                if (keys == 2)
+                {
+                    Instantiate(key, position2.position, position2.rotation, position2.transform);
+                }
+                
             }
             else if (closeToLockedDoor)
             {
-
                 currentItem.GetComponent<Doors>().unlockDoor(this);
-
             }
         }
 
         if (pickingUp)
         {
             rb.velocity = new Vector2(0, 0);
-
         }
     }
     public void pickedUp()
     {
         pickingUp = false;
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

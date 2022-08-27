@@ -1,0 +1,2 @@
+Lavede denne mappe med de der random objects, da jeg ikke ved om de andre random objects bliver refereret til og brugt nogen steder, men så at de var sat til 100 pixels per unit, i stedet for resten af spillets 8
+Heri lavede jeg dem om til 8 for eget personlige brug
