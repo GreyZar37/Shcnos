@@ -1,4 +1,5 @@
 using Cinemachine;
+using sad;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,6 +30,7 @@ public class Movement : MonoBehaviour
     public Transform position2;
 
     public GameObject key;
+    public List<GameObject> clones = new List<GameObject>();
     
     [SerializeField]
     CinemachineVirtualCamera m_Camera;
@@ -48,6 +50,7 @@ public class Movement : MonoBehaviour
         audioSource = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioSource>();
         animate = gameObject.GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+
     }
 
     // Update is called once per frame
@@ -95,11 +98,13 @@ public class Movement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Tab) && inventoryUI.activeInHierarchy == true)
         {
             inventoryUI.SetActive(false);
+
         }
         else if (Input.GetKeyDown(KeyCode.Tab) && inventoryUI.activeInHierarchy == false)
         {
             inventoryUI.SetActive(true);
         }
+
 
     }
 
@@ -150,6 +155,7 @@ public class Movement : MonoBehaviour
 
     public void interact()
     {
+
         if (Input.GetKeyDown(KeyCode.F) && pickingUp == false && crouching != true)
         {
             if (closeToKey)
@@ -158,16 +164,23 @@ public class Movement : MonoBehaviour
                 animate.SetTrigger("PickUpStand");
                 pickingUp = true;
                 Destroy(currentItem);
-                Instantiate(key, position1.position, position1.rotation, position1.transform);
+                var clone1 = Instantiate(key, position1.position, position1.rotation, position1.transform);
+                clones.Add(clone1);
+
                 if (keys == 2)
                 {
-                    Instantiate(key, position2.position, position2.rotation, position2.transform);
+                    var clone2 = Instantiate(key, position2.position, position2.rotation, position2.transform);
+                    clones.Add(clone2);
                 }
                 
             }
             else if (closeToLockedDoor)
             {
                 currentItem.GetComponent<Doors>().unlockDoor(this);
+                foreach (var cloneObj in clones)
+                    Destroy(cloneObj);
+                clones.Clear();
+
             }
         }
 

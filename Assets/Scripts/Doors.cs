@@ -1,7 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Sockets;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class Doors : MonoBehaviour
 {
@@ -19,6 +23,7 @@ public class Doors : MonoBehaviour
     public bool locked;
 
     bool opening;
+    Movement p1;
 
     // Start is called before the first frame update
     void Start()
@@ -26,25 +31,26 @@ public class Doors : MonoBehaviour
         light2D = gameObject.GetComponentInChildren<Light2D>();
         currentTimer = doorOpenTimer;
         audioSource = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioSource>();
-      
+
     }
+
 
     // Update is called once per frame
     void Update()
     {
-       
+
 
         if (opening)
         {
             currentTimer -= Time.deltaTime;
 
-            if(light2D.intensity <= 1.5f)
+            if (light2D.intensity <= 1.5f)
             {
                 light2D.intensity += Time.deltaTime * 1.5f;
             }
-           
 
-           
+
+
         }
         else if (light2D.intensity > 0f)
         {
@@ -61,7 +67,7 @@ public class Doors : MonoBehaviour
             light2D.intensity = 0;
         }
 
-        if(currentTimer <= 0)
+        if (currentTimer <= 0)
         {
             block.SetActive(false);
         }
@@ -69,13 +75,14 @@ public class Doors : MonoBehaviour
         {
             block.SetActive(true);
         }
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
-           
+
 
             if (locked)
             {
@@ -104,15 +111,14 @@ public class Doors : MonoBehaviour
                 currentTimer = doorOpenTimer;
                 opening = false;
             }
-         
+
 
         }
 
     }
-
     public void unlockDoor(Movement data)
-    {
-        if(data.keys > 0)
+    {   
+        if (data.keys > 0)
         {
             locked = false;
             data.keys--;
@@ -121,5 +127,8 @@ public class Doors : MonoBehaviour
         }
     }
 
-   
 }
+
+
+
+
